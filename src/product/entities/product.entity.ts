@@ -14,6 +14,10 @@ export class Product {
   @Column({ length: 1000, nullable: false })
   description: string;
 
+  @IsNotEmpty()
+  @Column({ length: 100, nullable: false })
+  brand: string;
+
   @IsNumber()
   @Min(0)
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
