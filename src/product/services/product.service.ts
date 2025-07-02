@@ -11,13 +11,20 @@ export class ProductService {
   ) {}
 
   async findAll(): Promise<Product[]> {
-    return await this.productRepository.find();
+    return await this.productRepository.find({
+      relations: {
+        category: true,
+      },
+    });
   }
   async findById(id: number): Promise<Product> {
     const product = await this.productRepository.findOne({
       where: {
         id,
       },
+      relations: {
+        category: true,
+      }
     });
     if (!product) {
       throw new HttpException('Produto não encontrado!', HttpStatus.NOT_FOUND);
@@ -28,6 +35,9 @@ export class ProductService {
     return await this.productRepository.find({
       where: {
         name: ILike(`%${name}%`),
+      },
+      relations: {
+        category: true,
       },
     });
   }
