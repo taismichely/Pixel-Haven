@@ -29,7 +29,7 @@ export class Product {
   @Column({ type: 'bigint', nullable: false })
   quantity: number;
 
-  @ManyToOne(() => Category, (category) => category.porduct, {
+  @ManyToOne(() => Category, (category) => category.product, {
     onDelete: 'CASCADE',
   })
   category: Category;

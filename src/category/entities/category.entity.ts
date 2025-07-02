@@ -8,9 +8,9 @@ export class Category {
   id: number;
 
   @IsNotEmpty()
-  @Column({ length: 1000, nullable: false })
+  @Column({ length: 255, nullable: false })
   description: string;
 
   @OneToMany(() => Product, (product) => product.category)
-  category: Category[];
+  product: Product[];
 }
